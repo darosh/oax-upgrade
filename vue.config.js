@@ -2,7 +2,9 @@ const generate = require('project-name-generator')
 const crypto = require('crypto')
 const { resolve } = require('path')
 
-// process.env.BASE_URL = './'
+const baseUrl = './'
+
+process.env.BASE_URL = baseUrl
 
 process.env.VUE_APP_VERSION = require('./package').version
 process.env.VUE_APP_TIME = Date.now()
@@ -62,7 +64,7 @@ module.exports = {
       .globalObject('this')
   },
 
-  baseUrl: './',
+  baseUrl,
 
   devServer: {
     disableHostCheck: true,
