@@ -8,16 +8,19 @@
         v-toolbar-title
           span.subheader.white--text HTTP Method
       v-card-text
-        div(class="group")
+        v-layout(row justify-space-between)
           div
-            v-icon {{method[3] ? 'check_box' : 'check_box_outline_blank'}}
-            |  Safe
+            v-layout(align-center)
+              v-icon.mr-1 {{method[3] ? 'check_box' : 'check_box_outline_blank'}}
+              |  Safe
           div
-            v-icon {{method[4] ? 'check_box' : 'check_box_outline_blank'}}
-            |  Idempotent
+            v-layout(align-center)
+              v-icon.mr-1 {{method[4] ? 'check_box' : 'check_box_outline_blank'}}
+              |  Idempotent
           div
-            v-icon {{method[5] ? 'check_box' : 'check_box_outline_blank'}}
-            |  Cacheable
+            v-layout(align-center)
+              v-icon.mr-1 {{method[5] ? 'check_box' : 'check_box_outline_blank'}}
+              |  Cacheable
       v-divider
       v-card-text(class="capitalize") {{method[0]}}
       v-card-actions
@@ -49,7 +52,7 @@ export default {
   },
   methods: {
     show (method) {
-      methods().then((res) => {
+      methods().then(({default: res}) => {
         this.initialized = true
         this.type = method
         this.method = res[method]
