@@ -2,11 +2,11 @@
   div
     v-divider
     //v-list.pa-0(two-line)
-    virtual-scroller.scroller-recent(v-if="RECENT", :items="RECENT", item-height="73" prerender="24", pool-size="292" buffer="292" key-field="url" content-tag="ul" content-class="pa-0 list list--two-line dividers")
+    virtual-scroller.scroller-recent(v-if="RECENT", :items="RECENT", item-height="57" prerender="24", pool-size="292" buffer="292" key-field="url" content-tag="ul" content-class="pa-0 list list--two-line dividers")
       template(slot-scope="props")
         v-list-tile(:key="props.itemKey", ripple avatar @click="clicked(props.item.url)", :to="{path: '/', query: {url: props.item.url}}" exact)
           v-list-tile-avatar
-            .icon.white--text(v-if="key(props.item)", :style="{'background-color': color(props.item)}") {{letter(props.item)}}
+            .v-icon.white--text(v-if="key(props.item)", :style="{'background-color': color(props.item)}") {{letter(props.item)}}
             v-icon(v-else class="secondary white--text") link
           v-list-tile-content
             v-list-tile-title {{props.item.title}}
