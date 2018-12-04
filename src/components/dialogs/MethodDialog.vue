@@ -52,7 +52,7 @@ export default {
   },
   methods: {
     show (method) {
-      methods().then(({default: res}) => {
+      methods().then(({ default: res }) => {
         this.initialized = true
         this.type = method
         this.method = res[method]
