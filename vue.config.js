@@ -2,7 +2,8 @@ const generate = require('project-name-generator')
 const crypto = require('crypto')
 const { resolve } = require('path')
 
-process.env.BASE_URL = '/'
+// process.env.BASE_URL = './'
+
 process.env.VUE_APP_VERSION = require('./package').version
 process.env.VUE_APP_TIME = Date.now()
 process.env.VUE_APP_NAME = generate().dashed
@@ -55,7 +56,13 @@ module.exports = {
       .loader('raw-loader')
 
     config.entry('app').clear().add('./src/index.js')
+
+    config
+      .output
+      .globalObject('this')
   },
+
+  baseUrl: './',
 
   devServer: {
     disableHostCheck: true,
