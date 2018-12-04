@@ -1,0 +1,13 @@
+{
+  "url": "https://darosh.github.io/openapi-directory-lite/specs/github.com/v3.json",
+  "defaultTitle": "API",
+  "proxy": "https://cors-anywhere.herokuapp.com/",
+  "defaultDarkTheme": false,
+  "allowUrlEdit": true,
+  "allowSwithTheme": true,
+  "allowEditProxy": true,
+  "allowDownload": false,
+  "updated": false,
+  "limitSpecButtonText": 8,
+  "directory": ["openAPIDirectory", "openAPIDirectoryLite", "swaggerHubRegistry", "apisIoOpenAPIs", "openAPISamples", "hapi"]
+}
