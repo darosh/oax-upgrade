@@ -4,7 +4,7 @@
       template(slot="items" slot-scope="props")
         td
           app-response(:code="props.item[4]")
-        td.capitalize.nowrap(v-html="props.item[0]")
+        td.capitalize.nowrap.fix(v-html="props.item[0]")
         td.nop.capitalize(v-html="props.item[1]")
         td
           a(:href="props.item[3]" target="_blank" rel="noopener") {{ props.item[2] }}
@@ -31,7 +31,7 @@ export default {
     }
   },
   created () {
-    items().then(res => {
+    items().then(({ default: res }) => {
       Object.keys(res).map(k => {
         const item = res[k].slice()
         item.push(k)
@@ -51,4 +51,7 @@ export default {
 
 <style scoped lang="stylus">
   @import "../style/app/table.styl"
+
+  >>> .fix > p
+    margin-bottom: 0
 </style>
