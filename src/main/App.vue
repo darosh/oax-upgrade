@@ -8,7 +8,7 @@
     app-toolbar
     v-content#main
       router-view
-    app-log-dialog(:value="log")
+    app-log-dialog(v-model="log")
     app-tour(v-if="UI_HIGHLIGHT")
     appFab
     v-snackbar(:value="APP_UPDATED" top :timeout="1e10") Update ready

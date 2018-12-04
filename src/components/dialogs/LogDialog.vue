@@ -1,10 +1,10 @@
 <template lang="pug">
-  v-dialog(max-width="300" v-model="value" hide-overlay persistent)
+  v-dialog(max-width="300" :value="value" hide-overlay persistent @input="value => $emit('input', value)")
     v-card
       v-toolbar.transparent.elevation-0
         v-toolbar-title Log
         v-spacer
-        v-btn(icon flat @click="log = !log")
+        v-btn(icon flat @click="$emit('input', false)")
           v-icon close
       v-divider
       v-card-text(style="padding-right: 26px;")
