@@ -13,7 +13,7 @@ export const getters = {
   },
   [types.APP_UPDATED]: state => state.configuration.updated,
   [types.APP_VERSION]: state => process.env.VUE_APP_VERSION,
-  [types.APP_BUILD]: state => new Date(process.env.VUE_APP_TIME),
+  [types.APP_BUILD]: state => new Date(parseInt(process.env.VUE_APP_TIME)),
   [types.APP_ROUTED]: state => state.route.name !== null,
   [types.APP_API_PAGE]: state => state.route.name === 'index',
   [types.APP_PATH]: state => state.route.path,
