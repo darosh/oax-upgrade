@@ -10,7 +10,7 @@
           v-subheader API Collection
           v-list-tile(@click="collection = k + 1" ripple avatar v-for="(d, k) in configuration.directory", :key="k")
             v-list-tile-avatar(:tile="collection === (k+1)")
-              .icon.white--text(:class="collection !== (k+1) ? 'secondary' : 'primary'") {{k+1}}
+              .v-icon.white--text(:class="collection !== (k+1) ? 'secondary' : 'primary'") {{k+1}}
             v-list-tile-content
               v-list-tile-title {{directory[d].title}}
               v-list-tile-sub-title {{directory[d].subTitle}}
@@ -32,7 +32,7 @@
           v-btn(icon @click="category = null")
             v-icon cancel
         v-divider(v-if="category")
-        virtual-scroller.scroller(v-if="APIS", :class="{filtered: category}", :items="filtered", item-height="73" prerender="24", pool-size="292" buffer="292" key-field="key" content-tag="ul" content-class="pa-0 list list--two-line dividers")
+        virtual-scroller.scroller(v-if="APIS", :class="{filtered: category}", :items="filtered", item-height="57" prerender="24", pool-size="292" buffer="292" key-field="key" content-tag="ul" content-class="pa-0 list list--two-line dividers")
           template(slot-scope="props")
             .pt-2.text-xs-center(v-if="props.itemKey === last", :key="props.itemKey")
               v-progress-circular(class="primary--text" indeterminate )
@@ -40,7 +40,7 @@
             v-list-tile(v-else :key="props.itemKey" ripple avatar @click="clicked(props.item.url)", :to="{path: '/', query: {url: props.item.url}}" exact)
               v-list-tile-avatar
                 v-icon(v-if="props.item.categories && icon(props.item)", class="white--text", :style="{'background-color': color(props.item)}") {{icon(props.item)}}
-                .icon.white--text(v-else :style="{'background-color': color(props.item)}") {{letter(props.item)}}
+                .v-icon.white--text(v-else :style="{'background-color': color(props.item)}") {{letter(props.item)}}
               v-list-tile-content
                 v-list-tile-title.main--text {{props.item.title}}
                 v-list-tile-sub-title {{props.item.key}}
@@ -280,7 +280,7 @@ export default {
     position: absolute
     top: 0
 
-  .btn--category__icon .icon
+  .btn--category__icon .v-icon
     color: rgba(255, 255, 255, .96)
     fill: rgba(255, 255, 255, .96)
 
@@ -304,7 +304,7 @@ export default {
     .btn--category__counter
       background-color: rgba(64, 64, 64, .64)
 
-    .btn--category__icon .icon
+    .btn--category__icon .v-icon
       color: rgba(0, 0, 0, .64)
       fill: rgba(0, 0, 0, .64)
 </style>

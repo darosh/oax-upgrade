@@ -1,6 +1,6 @@
 {
   "name": "oax",
-  "version": "1.1.412",
+  "version": "1.1.413",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",

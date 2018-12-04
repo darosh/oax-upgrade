@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-layout.ma-0.toolbar__content(row style="height: 100%")
+  v-layout.ma-0.px-0.v-toolbar__content(row style="height: 100%")
     v-btn(v-if="($route.name === 'about') && !UI_LEFT_DRAWER" icon, @click.stop="UI_SET_LEFT_DRAWER()")
       v-icon menu
     v-toolbar-title {{APP_PAGE_NAME}}
