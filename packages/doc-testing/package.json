@@ -1,0 +1,12 @@
+{
+  "name": "doc-testing",
+  "version": "1.0.0",
+  "license": "MIT",
+  "bin": {
+    "doc-testing": "./cli.js"
+  },
+  "dependencies": {
+    "lodash.template": "^4.4.0",
+    "openapi-samples": "github:darosh/openapi-samples"
+  }
+}
