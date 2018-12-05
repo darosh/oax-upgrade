@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
       console.log('New content is downloading.')
     },
     updated (registration) {
-      Vue.set(state, 'registration', registration)
+      Vue.set(serviceWorker, 'registration', registration)
       console.log('New content is available; please refresh.')
     },
     offline () {

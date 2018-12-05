@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-container.pa-0-sm-nl.gpu(v-once style="width: 100%; max-width: 100%")
+  v-container.pa-0-sm-nl.gpu(v-once, style="width: 100%; max-width: 100%")
     v-layout.ma-3-md
       v-spacer.hidden-xs-only
       v-flex(style="max-width: 80em")
@@ -133,6 +133,7 @@ export default {
         .replace(/^del /, 'delete ')))
 
     return {
+      serviceWorker,
       keys,
       directories,
       services,
@@ -164,8 +165,8 @@ export default {
   },
   methods: {
     reload () {
-      if (serviceWorker.registration) {
-        serviceWorker.registration.update()
+      if (this.serviceWorker.registration) {
+        this.serviceWorker.registration.update()
       } else {
         location.reload(true)
       }
