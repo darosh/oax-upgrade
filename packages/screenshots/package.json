@@ -1,0 +1,13 @@
+{
+  "name": "screenshots",
+  "version": "1.0.0",
+  "bin": {
+    "cli-screenshots": "./cli-screenshots-index.js",
+    "cli-screenshots-index": "./cli-screenshots-index.js"
+  },
+  "devDependencies": {
+    "puppeteer": "^1.11.0"
+  },
+  "license": "MIT",
+  "private": true
+}

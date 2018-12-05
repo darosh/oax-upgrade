@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const rimraf = require('rimraf')
 const puppeteer = require('puppeteer')
 const cfg = require('../../config/doc/screenshots.json')

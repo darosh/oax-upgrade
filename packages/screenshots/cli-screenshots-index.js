@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const rimraf = require('rimraf')
 const fs = require('fs')
 const template = require('lodash.template')
