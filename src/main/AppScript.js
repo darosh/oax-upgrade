@@ -161,7 +161,7 @@ export default {
       types.SPEC_SET_PREV_OPERATION
     ]),
     reload () {
-      window.location.reload()
+      window.location.reload(true)
     }
   },
   watch: {

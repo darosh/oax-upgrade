@@ -168,7 +168,7 @@ export default {
       if (this.serviceWorker.registration) {
         this.serviceWorker.registration.update()
       } else {
-        location.reload(true)
+        window.location.reload(true)
       }
     }
   }
