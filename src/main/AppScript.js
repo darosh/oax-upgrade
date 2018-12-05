@@ -5,6 +5,7 @@ import Vue from 'vue'
 import layout from '../components/mixins/layout'
 import appToolbar from '../components/toolbars/Toolbar'
 import appDetail from '../components/panels/right/Detail'
+import { serviceWorker } from '../plugins/register-service-worker'
 // import appTour from '../components/elements/misc/Tour.vue'
 
 export default {
@@ -25,7 +26,8 @@ export default {
       leftOpening: false,
       leftClosing: false,
       rightOpening: false,
-      rightClosing: false
+      rightClosing: false,
+      serviceWorker
     }
   },
   computed: {

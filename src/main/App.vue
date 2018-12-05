@@ -11,7 +11,7 @@
     app-log-dialog(v-model="log")
     app-tour(v-if="UI_HIGHLIGHT")
     appFab
-    v-snackbar(:value="APP_UPDATED" top :timeout="1e10") Update ready
+    v-snackbar(:value="!!serviceWorker.registration" top :timeout="1e10") Update ready
       a.snackbar-action(@click="reload") Reload
     #cm-full
 </template>

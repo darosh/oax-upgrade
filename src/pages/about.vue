@@ -108,6 +108,7 @@ import appKeyboard from '../components/elements/misc/Keyboard'
 import keys from '../data/keys.json'
 import * as directories from '../scripts/services/directory'
 import services from '../data/services.json'
+import { serviceWorker } from '../plugins/register-service-worker'
 
 export default {
   components: {
@@ -163,8 +164,8 @@ export default {
   },
   methods: {
     reload () {
-      if (window.OAX && window.OAX.registration && window.OAX.registration.update) {
-        window.OAX.registration.update()
+      if (serviceWorker.registration) {
+        serviceWorker.registration.update()
       } else {
         location.reload(true)
       }

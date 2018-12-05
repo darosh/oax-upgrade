@@ -1,6 +1,11 @@
 /* eslint-disable no-console */
 
 import { register } from 'register-service-worker'
+import Vue from 'vue'
+
+export const serviceWorker = {
+  registration: null
+}
 
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
@@ -19,7 +24,8 @@ if (process.env.NODE_ENV === 'production') {
     updatefound () {
       console.log('New content is downloading.')
     },
-    updated () {
+    updated (registration) {
+      Vue.set(state, 'registration', registration)
       console.log('New content is available; please refresh.')
     },
     offline () {
