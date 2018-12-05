@@ -80,6 +80,6 @@ know.methods.forEach(function (i) {
   }
 })
 
-const data = {method, header, status}
+const data = { method, header, status }
 
 console.log(JSON.stringify(data[process.argv[2]], null, 2))

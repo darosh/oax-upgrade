@@ -7,7 +7,7 @@ const template = require('lodash.template')
 
 const tools = require('./tools.json')
 
-const TEMPLATE = readFileSync(resolve(__dirname,'./template.md'), 'utf8')
+const TEMPLATE = readFileSync(resolve(__dirname, './template.md'), 'utf8')
 const TARGET = process.argv[2]
 
 const compiled = template(TEMPLATE)

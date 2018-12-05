@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-new-func */
+
 const rimraf = require('rimraf')
 const puppeteer = require('puppeteer')
 const cfg = require('../../config/doc/screenshots.json')
@@ -31,9 +33,8 @@ function path (theme, screen, shot, index) {
   let page = await browser.newPage()
 
   for (const screen in cfg.screens) {
-
     await page.setViewport(
-      {width: cfg.screens[screen][0], height: cfg.screens[screen][1]})
+      { width: cfg.screens[screen][0], height: cfg.screens[screen][1] })
 
     let index = 0
 
@@ -46,7 +47,7 @@ function path (theme, screen, shot, index) {
 
       if (s.url) {
         // await page.goto('about:url')
-        await page.goto(base + s.url, {waitUntil: 'networkidle'})
+        await page.goto(base + s.url, { waitUntil: 'networkidle' })
         about = false
 
         if (cfg.before) {
@@ -82,7 +83,7 @@ function path (theme, screen, shot, index) {
 
       for (const theme in cfg.themes) {
         await page.evaluate(new Function(cfg.themes[theme].eval))
-        await page.screenshot({path: path(theme, screen, s.title, index)})
+        await page.screenshot({ path: path(theme, screen, s.title, index) })
       }
 
       if (s.evalAfter) {

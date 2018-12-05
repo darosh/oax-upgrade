@@ -19,5 +19,5 @@ schema.load().then(() => {
   schema.bundle()
   schema.deref(true, true)
   delete schema.bundled.definitions['http:']
-  writeFileSync(TARGET, compactJson(JSON.parse(circularJson.stringify(schema.bundled)), {maxLength: 120}))
+  writeFileSync(TARGET, compactJson(JSON.parse(circularJson.stringify(schema.bundled)), { maxLength: 120 }))
 }).catch(err => console.log(err))

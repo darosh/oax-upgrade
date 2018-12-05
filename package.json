@@ -86,6 +86,7 @@
     "deploy": "npm --no-git-tag-version version patch && npm run build && deploy-to-gh-pages --local ./dist",
     "install": "npx -p ./packages/vuetify-patch -c vuetify-patch",
     "lint": "vue-cli-service lint",
+    "lint:packages": "vue-cli-service lint packages/**/*.js",
     "serve": "vue-cli-service serve",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
