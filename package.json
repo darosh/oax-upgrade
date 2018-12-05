@@ -5,9 +5,10 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
+    "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
+    "data:schema": "npx -p ./packages/data-schema -c \"data-schema ./src/data/swagger-schema.json\"",
     "deploy": "npm --no-git-tag-version version patch && npm run build && deploy-to-gh-pages --local ./dist",
     "install": "npx -p ./packages/vuetify-patch -c vuetify-patch",
-    "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
     "lint": "vue-cli-service lint",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
