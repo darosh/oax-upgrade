@@ -1,7 +1,6 @@
 {
   "name": "data-schema",
   "version": "1.0.0",
-  "license": "MIT",
   "bin": {
     "data-schema": "./cli.js"
   },
@@ -11,5 +10,7 @@
     "json-schema-bundler": "^0.1.11",
     "json-stringify-pretty-compact": "^1.2.0",
     "yaml-js": "^0.2.3"
-  }
+  },
+  "license": "MIT",
+  "private": true
 }

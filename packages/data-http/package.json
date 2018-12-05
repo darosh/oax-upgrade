@@ -1,12 +1,13 @@
 {
   "name": "data-http",
   "version": "1.0.0",
-  "license": "MIT",
   "bin": {
     "data-http": "./cli.js"
   },
   "dependencies": {
     "know-your-http-well": "^0.5.0",
     "showdown": "^1.9.0"
-  }
+  },
+  "license": "MIT",
+  "private": true
 }

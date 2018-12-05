@@ -1,15 +1,13 @@
 {
   "name": "vuetify-patch",
-  "version": "1.0.0",
   "description": "Patch Vuetify",
+  "version": "1.0.0",
   "bin": {
     "vuetify-patch": "./cli.js"
   },
-  "license": "MIT",
-  "scripts": {
-    "patch": "node ./cli.js"
-  },
   "dependencies": {
     "recursive-readdir": "2.2.2"
-  }
+  },
+  "license": "MIT",
+  "private": true
 }
