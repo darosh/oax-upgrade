@@ -106,7 +106,7 @@ import * as types from '../store/types'
 import dependencies from '../data/dependencies.json'
 import appKeyboard from '../components/elements/misc/Keyboard'
 import keys from '../data/keys.json'
-import * as directories from '../scripts/services/directory'
+import * as directories from '../services/directory'
 import services from '../data/services.json'
 import { serviceWorker } from '../plugins/register-service-worker'
 

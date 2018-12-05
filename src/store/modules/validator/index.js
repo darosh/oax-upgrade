@@ -1,6 +1,6 @@
 import * as types from './types'
 import axios from 'axios'
-import { isMemory } from '@/scripts/utils/memory'
+import { isMemory } from '../../../utils/memory'
 
 export const state = {
   result: null

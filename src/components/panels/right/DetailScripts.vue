@@ -15,11 +15,11 @@
 <script>
 import { mapGetters } from 'vuex'
 import * as types from '../../../store/types'
-import { configure } from '../../../scripts/specification/methods/execute'
-import axiosScript from '../../../scripts/utils/code-formatters/axios-script'
-import angularScript from '../../../scripts/utils/code-formatters/angular-script'
+import { configure } from '../../../specification/methods/execute'
+import axiosScript from '../../../utils/code-formatters/axios-script'
+import angularScript from '../../../utils/code-formatters/angular-script'
 // import jqueryScript from '../../models/scripts/jquery-script'
-import url from '../../../scripts/utils/url'
+import url from '../../../utils/url'
 
 export default {
   props: ['item'],

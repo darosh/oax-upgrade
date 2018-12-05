@@ -8,8 +8,8 @@
 import { mapGetters } from 'vuex'
 import * as types from '../../../store/types'
 
-import position from '../../../scripts/utils/element-position'
-import { select } from '../../../scripts/utils/select'
+import position from '../../../utils/element-position'
+import { select } from '../../../utils/select'
 
 export default {
   data () {

@@ -16,7 +16,7 @@
 <script>
 import { mapMutations, mapGetters } from 'vuex'
 import * as types from '../../store/types'
-import links from '../../scripts/utils/links'
+import links from '../../utils/links'
 
 export default {
   components: {

@@ -3,7 +3,7 @@ import * as typesSPEC from '../spec/types'
 
 import axios from 'axios'
 import Vue from 'vue'
-import { isMemory } from '../../../scripts/utils/memory'
+import { isMemory } from '../../../utils/memory'
 
 const URL = {
   client: 'https://generator.swagger.io/api/gen/clients',

@@ -1,7 +1,7 @@
 import * as types from './types'
 import * as typesUI from '../ui/types'
 
-import { configuration } from '../../../scripts/services/configuration'
+import { configuration } from '../../../services/configuration'
 
 export const getters = {
   [types.APP_HOME]: state => {

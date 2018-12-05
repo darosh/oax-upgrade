@@ -1,4 +1,4 @@
-import { configuration } from '../../../scripts/services/configuration'
+import { configuration } from '../../../services/configuration'
 
 export const state = configuration
 

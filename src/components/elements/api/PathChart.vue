@@ -21,9 +21,9 @@ import { mapGetters, mapMutations } from 'vuex'
 import * as types from '../../../store/types'
 import { Graph } from '../../../plugins/graphlib'
 import { monotoneX, line, scaleLinear } from '../../../plugins/d3'
-import { MethodStyle } from '../../../scripts/services/method-style'
-import getPaths from '../../../scripts/utils/paths'
-import measure from '../../../scripts/utils/measure'
+import { MethodStyle } from '../../../services/method-style'
+import getPaths from '../../../utils/paths'
+import measure from '../../../utils/measure'
 
 const dagre = require('../../../plugins/dagre.js')
 

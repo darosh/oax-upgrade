@@ -35,7 +35,7 @@ import appMethod from '../elements/api/Method'
 import markdown from '../../components/directives/markdown'
 import appResponse from '../elements/api/Response'
 import appPath from '../elements/api/Path'
-import { schemas } from '../../scripts/specification/methods/schemas'
+import { schemas } from '../../specification/methods/schemas'
 
 export default {
   directives: {

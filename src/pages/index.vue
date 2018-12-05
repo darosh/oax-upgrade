@@ -55,7 +55,7 @@ import appMetaList from '../components/views/MetaList'
 import appTagList from '../components/views/TagList'
 
 import markdown from '../components/directives/markdown'
-import { configuration } from '../scripts/services/configuration'
+import { configuration } from '../services/configuration'
 
 export default {
   directives: {

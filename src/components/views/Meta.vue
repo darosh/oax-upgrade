@@ -23,7 +23,7 @@
 import { mapMutations } from 'vuex'
 import * as types from '../../store/types'
 import appDonutChart from '../elements/misc/DonutChart'
-import { MethodStyle } from '../../scripts/services/method-style'
+import { MethodStyle } from '../../services/method-style'
 
 export default {
   components: {

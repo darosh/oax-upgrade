@@ -59,9 +59,9 @@
 import { mapGetters, mapMutations } from 'vuex'
 import * as types from '../../../store/types'
 
-import { value, type } from '../../../scripts/specification/methods/schema'
-import { allOf, mergeAllOf } from '../../../scripts/utils/allof'
-import { name, names } from '../../../scripts/utils/name'
+import { value, type } from '../../../specification/methods/schema'
+import { allOf, mergeAllOf } from '../../../utils/allof'
+import { name, names } from '../../../utils/name'
 
 export default {
   name: 'app-model',

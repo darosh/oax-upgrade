@@ -4,13 +4,13 @@ import * as typesSETTINGS from '../settings/types'
 import * as typesRECENT from '../recent/types'
 
 import worker from '../../../worker/index'
-import search from '../../../scripts/specification/methods/search'
-import { openAll } from '../../../scripts/specification/methods/tags'
+import search from '../../../specification/methods/search'
+import { openAll } from '../../../specification/methods/tags'
 import CircularJSON from 'circular-json'
 import { applyPatch } from 'fast-json-patch'
-import { observables } from '../../../scripts/specification/methods/observables'
-import { setError } from '../../../scripts/services/codemirror-lint-json'
-import { isMemory } from '../../../scripts/utils/memory'
+import { observables } from '../../../specification/methods/observables'
+import { setError } from '../../../services/codemirror-lint-json'
+import { isMemory } from '../../../utils/memory'
 
 export const state = {
   spec: null,

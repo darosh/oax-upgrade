@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import { value } from '../../../scripts/specification/methods/schema'
+import { value } from '../../../specification/methods/schema'
 import appJson from './Json'
 
 export default {

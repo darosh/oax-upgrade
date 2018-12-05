@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import codeMirror from '../../../scripts/services/codemirror'
-import jsonPath from '../../../scripts/utils/codemirror-json-path'
+import codeMirror from '../../../services/codemirror'
+import jsonPath from '../../../utils/codemirror-json-path'
 
 export default {
   props: {

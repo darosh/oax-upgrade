@@ -36,8 +36,8 @@
 </template>
 
 <script>
-import { MethodStyle } from '../../scripts/services/method-style'
-import limit from '../../scripts/utils/limit'
+import { MethodStyle } from '../../services/method-style'
+import limit from '../../utils/limit'
 import dialog from '../mixins/dialog'
 
 const methods = () => import('../../data/http-method.json')
