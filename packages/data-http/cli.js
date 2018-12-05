@@ -1,10 +1,12 @@
-var GENERATE_ARRAY = true
+#!/usr/bin/env node
 
-var know = require('know-your-http-well')
-var showdown = require('showdown')
-var converter = new showdown.Converter()
+const GENERATE_ARRAY = true
 
-var header = {}
+const know = require('know-your-http-well')
+const showdown = require('showdown')
+const converter = new showdown.Converter()
+
+const header = {}
 
 know.headers.forEach(function (i) {
   if (GENERATE_ARRAY) {
@@ -78,6 +80,6 @@ know.methods.forEach(function (i) {
   }
 })
 
-var data = {method, header, status};
+const data = {method, header, status}
 
-console.log(JSON.stringify(data[process.argv[2]], null, 2));
+console.log(JSON.stringify(data[process.argv[2]], null, 2))

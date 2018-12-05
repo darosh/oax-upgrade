@@ -1,18 +1,6 @@
 {
   "name": "oax",
   "version": "1.1.429",
-  "private": true,
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
-    "data:schema": "npx -p ./packages/data-schema -c \"data-schema ./src/data/swagger-schema.json\"",
-    "deploy": "npm --no-git-tag-version version patch && npm run build && deploy-to-gh-pages --local ./dist",
-    "install": "npx -p ./packages/vuetify-patch -c vuetify-patch",
-    "lint": "vue-cli-service lint",
-    "test:e2e": "vue-cli-service test:e2e",
-    "test:unit": "vue-cli-service test:unit"
-  },
   "dependencies": {
     "@types/d3-array": "1.2.4",
     "@types/d3-scale": "2.0.2",
@@ -85,5 +73,20 @@
     "vue-template-compiler": "2.5.17",
     "vuetify-loader": "1.0.8",
     "worker-loader": "2.0.0"
+  },
+  "private": true,
+  "scripts": {
+    "build": "vue-cli-service build",
+    "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
+    "data:http:header": "npx -p ./packages/data-http -c \"data-http header > ./src/data/http-header.json\"",
+    "data:http:method": "npx -p ./packages/data-http -c \"data-http method > ./src/data/http-method.json\"",
+    "data:http:status": "npx -p ./packages/data-http -c \"data-http status > ./src/data/http-status.json\"",
+    "data:schema": "npx -p ./packages/data-schema -c \"data-schema ./src/data/swagger-schema.json\"",
+    "deploy": "npm --no-git-tag-version version patch && npm run build && deploy-to-gh-pages --local ./dist",
+    "install": "npx -p ./packages/vuetify-patch -c vuetify-patch",
+    "lint": "vue-cli-service lint",
+    "serve": "vue-cli-service serve",
+    "test:e2e": "vue-cli-service test:e2e",
+    "test:unit": "vue-cli-service test:unit"
   }
 }
