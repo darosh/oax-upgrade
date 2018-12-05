@@ -1,11 +1,11 @@
 <template lang="pug">
-  v-expansion-panel(expand :class="VIEW_DARK ? 'theme--dark' : 'theme--light'")
-    v-expansion-panel-content(v-model="exp1", ripple)
+  v-expansion-panel(:value="[exp1, script.exp]", expand :class="VIEW_DARK ? 'theme--dark' : 'theme--light'")
+    v-expansion-panel-content(ripple)
       div.subheading(slot="header") Request URL
       v-divider
       v-card.pa-3
         a(:href="url" target="_blank" rel="noopener" class="primary--text wrap") {{url}}
-    v-expansion-panel-content(v-for="(script, scriptIndex) in scripts", :key="scriptIndex" v-model="script.exp", ripple)
+    v-expansion-panel-content(v-for="(script, scriptIndex) in scripts", :key="scriptIndex" ripple)
       div.subheading(slot="header") {{script.title}}
       v-divider
       v-card.pa-3

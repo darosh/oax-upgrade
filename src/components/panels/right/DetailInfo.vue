@@ -1,10 +1,10 @@
 <template lang="pug">
-  v-expansion-panel(expand :class="VIEW_DARK ? 'theme--dark' : 'theme--light'")
-    v-expansion-panel-content(v-if="item._.description" v-model="exp1", ripple)
+  v-expansion-panel(:value="[exp1, exp2]", expand, :class="VIEW_DARK ? 'theme--dark' : 'theme--light'")
+    v-expansion-panel-content(v-if="item._.description" ripple)
       div.subheading(slot="header") Description
       v-divider
       v-card.pa-3(v-markdown="item._")
-    v-expansion-panel-content(v-model="exp2", ripple)
+    v-expansion-panel-content(ripple)
       div.subheading(slot="header") Responses
       v-divider
       v-card.pb-3

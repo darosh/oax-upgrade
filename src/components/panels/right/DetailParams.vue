@@ -1,6 +1,6 @@
 <template lang="pug">
-  v-expansion-panel(expand :class="VIEW_DARK ? 'theme--dark' : 'theme--light'")
-    v-expansion-panel-content(v-model="exp1", ripple)
+  v-expansion-panel(:value="[exp1, exp2]", expand, :class="VIEW_DARK ? 'theme--dark' : 'theme--light'")
+    v-expansion-panel-content(ripple)
       div.subheading(slot="header") Settings
       v-divider
       v-card.pt-2.pb-2
@@ -8,7 +8,7 @@
           v-select.no-details(:items="SPEC.schemes" v-model="SPEC._._scheme", :disabled="SPEC.schemes.length === 1" label="Scheme")
         .pl-3.pr-3
           v-select.no-details(:items="item.produces" v-model="item._._produces", :disabled="item.produces.length === 1"  label="Response type")
-    v-expansion-panel-content(v-model="exp2", ripple)
+    v-expansion-panel-content(ripple)
       div.subheading(slot="header") Parameters
       v-divider
       v-card.pt-2.pb-2
