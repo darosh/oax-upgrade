@@ -8,6 +8,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
+    "cli-progress": "^2.1.0",
     "lodash.template": "^4.4.0",
     "mkdirp": "^0.5.1",
     "puppeteer": "^1.11.0",

@@ -19,14 +19,14 @@
     {
       "title": "loading",
       "url": "/",
-      "wait": ".expansion-panel",
+      "wait": ".v-expansion-panel",
       "eval": "OAX.state.ui.loading = OAX.state.ui.log; window.temp = {spec: OAX.state.spec.spec, resources: OAX.state.spec.resources}; OAX.state.spec.spec = null; OAX.state.spec.resources = null",
       "evalAfter": "Object.assign(OAX.state.spec, window.temp)"
     },
     {
       "title": "landing",
       "url": "/",
-      "wait": ".expansion-panel"
+      "wait": ".v-expansion-panel"
     },
     {
       "title": "security",

@@ -2,9 +2,11 @@
 
 /* eslint-disable no-new-func */
 
+const { sync: mkdirpSync } = require('mkdirp')
 const rimraf = require('rimraf')
 const puppeteer = require('puppeteer')
 const cfg = require('./screenshots.json')
+const progress = require('cli-progress')
 
 const TARGET = process.argv[2]
 const BASE = process.argv[3]
@@ -22,35 +24,45 @@ if (SIZES) {
   })
 }
 
+mkdirpSync(`${TARGET}/images`)
+
 rimraf.sync(`${TARGET}/images/**/*.png`)
 
-function imagePath (theme, screen, shot, index) {
-  console.log(screen, `${index < 10 ? '0' + index : index}`, shot, theme)
-  return `${TARGET}/images/${theme}_${screen}_${index < 10
-    ? '0' + index
-    : index}_${shot}.png`
-}
+const bar = new progress.Bar({
+  etaBuffer: 8,
+  barsize: 10,
+  hideCursor: true,
+  format: '[{bar}] {percentage}% | {eta}s | {value}/{total} | {duration}s | {item}'
+}, progress.Presets.rect)
 
 ;(async () => {
+  let counter = 0
+
+  bar.start(cfg.screens * cfg.shots * cfg.themes, counter, { item: 'Browser launching' })
+
   const browser = await puppeteer.launch()
+
+  bar.update(counter, { item: 'Page opening' })
 
   let page = await browser.newPage()
 
   for (const screen in cfg.screens) {
-    await page.setViewport(
-      { width: cfg.screens[screen][0], height: cfg.screens[screen][1] })
+    bar.update(counter, { item: `${screen}` })
+
+    await page.setViewport({ width: cfg.screens[screen][0], height: cfg.screens[screen][1] })
 
     let index = 0
 
     for (const shot in cfg.shots) {
       const s = cfg.shots[shot]
 
+      bar.update(counter, { item: `${screen}-${shot}-${s.title}` })
+
       if (s.evalBefore) {
         await page.evaluate(s.evalBefore)
       }
 
       if (s.url) {
-        // await page.goto('about:url')
         await page.goto(BASE + s.url, { waitUntil: 'networkidle2' })
         about = false
 
@@ -88,8 +100,9 @@ function imagePath (theme, screen, shot, index) {
       for (const theme in cfg.themes) {
         await page.evaluate(new Function(cfg.themes[theme].eval))
         const path = imagePath(theme, screen, s.title, index)
-        console.log(path)
+        bar.update(counter, { item: `${screen}-${shot}-${s.title}-${theme}` })
         await page.screenshot({ path })
+        counter++
       }
 
       if (s.evalAfter) {
@@ -102,4 +115,12 @@ function imagePath (theme, screen, shot, index) {
   }
 
   browser.close()
+
+  bar.stop()
 })()
+
+function imagePath (theme, screen, shot, index) {
+  return `${TARGET}/images/${theme}_${screen}_${index < 10
+    ? '0' + index
+    : index}_${shot}.png`
+}
