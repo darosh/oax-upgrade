@@ -1,6 +1,6 @@
 {
   "name": "oax",
-  "version": "1.1.429",
+  "version": "1.1.430",
   "dependencies": {
     "@types/d3-array": "1.2.4",
     "@types/d3-scale": "2.0.2",
@@ -82,11 +82,13 @@
     "data:http:method": "npx -p ./packages/data-http -c \"data-http method > ./src/data/http-method.json\"",
     "data:http:status": "npx -p ./packages/data-http -c \"data-http status > ./src/data/http-status.json\"",
     "data:schema": "npx -p ./packages/data-schema -c \"data-schema ./src/data/swagger-schema.json\"",
-    "doc:testing": "npx -p ./packages/doc-testing -c \"doc-testing ./doc/TESTING.md\"",
     "deploy": "npm --no-git-tag-version version patch && npm run build && deploy-to-gh-pages --local ./dist",
+    "doc:testing": "npx -p ./packages/doc-testing -c \"doc-testing ./doc/TESTING.md\"",
     "install": "npx -p ./packages/vuetify-patch -c vuetify-patch",
     "lint": "vue-cli-service lint",
     "lint:packages": "vue-cli-service lint packages/**/*.js",
+    "screenshots": "npx -p ./packages/screenshots -c \"screenshots screenshots md\"",
+    "screenshots:index": "npx -p ./packages/screenshots -c \"screenshots-index screenshots md\"",
     "serve": "vue-cli-service serve",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"

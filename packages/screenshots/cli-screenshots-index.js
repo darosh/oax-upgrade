@@ -1,12 +1,18 @@
 #!/usr/bin/env node
 
 const rimraf = require('rimraf')
-const fs = require('fs')
+const {sync: mkdirpSync} = require('mkdirp')
+const { readFileSync, writeFileSync } = require('fs')
+const { resolve } = require('path')
 const template = require('lodash.template')
-const cfg = require('../../config/doc/screenshots.json')
+const cfg = require('./screenshots.json')
+const resolveDir = dir => resolve(__dirname, dir)
 
-if (process.argv[2]) {
-  const pick = process.argv[2].split(',')
+const TARGET = process.argv[2]
+const SIZES = process.argv[3]
+
+if (SIZES) {
+  const pick = SIZES.split(',')
 
   Object.keys(cfg.screens).map(k => {
     if (pick.indexOf(k) === -1) {
@@ -15,11 +21,14 @@ if (process.argv[2]) {
   })
 }
 
-rimraf.sync('doc/screenshots/**/*.md')
+mkdirpSync(TARGET)
 
-const tmpl = fs.readFileSync('config/doc/screenshots.md', 'utf8')
-const tmplIndex = fs.readFileSync('config/doc/screenshots_index.md', 'utf8')
-const tmplShot = fs.readFileSync('config/doc/screenshot.md', 'utf8')
+rimraf.sync(`${TARGET}/**/*.md`)
+
+const tmpl = readFileSync(resolveDir('screenshots.md'), 'utf8')
+const tmplIndex = readFileSync(resolveDir('screenshots_index.md'), 'utf8')
+const tmplShot = readFileSync(resolveDir('screenshot.md'), 'utf8')
+
 const compiled = template(tmpl)
 const compiledIndex = template(tmplIndex)
 const compiledShot = template(tmplShot)
@@ -53,7 +62,7 @@ for (const theme in cfg.themes) {
       })
     }
 
-    fs.writeFileSync(`doc/screenshots/${theme}-${screen}.md`, compiled({
+    writeFileSync(`${TARGET}/${theme}-${screen}.md`, compiled({
       screen,
       size,
       theme,
@@ -68,8 +77,8 @@ for (const theme in cfg.themes) {
 const shots = cfg.shots.filter(v => !v.skip)
 
 shots.forEach((shot, index) => {
-  fs.writeFileSync(
-    `doc/screenshots/${(index + 1) < 10 ? '0' + (index + 1) : (index +
+  writeFileSync(
+    `${TARGET}/${(index + 1) < 10 ? '0' + (index + 1) : (index +
       1)}_${shot.title}.md`, compiledShot({
       index,
       shot,
@@ -79,7 +88,7 @@ shots.forEach((shot, index) => {
     }))
 })
 
-fs.writeFileSync(`doc/screenshots/README.md`, compiledIndex({
+writeFileSync(`${TARGET}/README.md`, compiledIndex({
   files,
   themes: cfg.themes,
   screens: cfg.screens,
