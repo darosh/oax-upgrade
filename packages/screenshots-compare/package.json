@@ -2,16 +2,20 @@
   "name": "screenshots-compare",
   "version": "1.0.0",
   "bin": {
+    "screenshots-fetch": "./cli-fetch.js",
     "screenshots-compare": "./cli-screenshots-compare.js"
   },
   "license": "MIT",
   "private": true,
   "dependencies": {
     "async-mkdirp": "^1.2.7",
+    "del": "^3.0.0",
     "esm": "^3.0.84",
     "glob": "^7.1.3",
+    "globby": "^8.0.1",
     "looks-same": "^4.1.0",
     "mkdirp": "^0.5.1",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "simple-git": "^1.107.0"
   }
 }

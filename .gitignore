@@ -3,6 +3,7 @@ node_modules
 /dist
 
 /screenshots
+/screenshots-repo
 
 /tests/e2e/videos/
 /tests/e2e/screenshots/
