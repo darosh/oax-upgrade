@@ -117,11 +117,11 @@
     },
     {
       "title": "recent",
-      "eval": "OAX.select.vue('app-drawer-left').$children[0].$children[0].tab = 'tab-recent'"
+      "eval": "OAX.select.vue('explorerpanel').tab = 'tab-recent'"
     },
     {
       "title": "edit",
-      "eval": "OAX.select.vue('app-drawer-left').$children[0].$children[0].tab = 'tab-edit'",
+      "eval": "OAX.select.vue('explorerpanel').tab = 'tab-edit'",
       "waitEval": ".CodeMirror-line"
     },
     {

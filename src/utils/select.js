@@ -5,7 +5,7 @@ export const selectMixin = {
   mounted: function () {
     if (this.$el && this.$el.setAttribute) {
       let tag = this.$options.name || this.$options._componentTag ||
-        this.$options.__file || ''
+        (this.$options.__file ? basename(this.$options.__file) : '')
       if (tag) {
         tag = tag.toLowerCase()
         this.$el.setAttribute(a, tag)
@@ -15,8 +15,14 @@ export const selectMixin = {
   }
 }
 
+function basename (file = '') {
+  return file.split('/').pop().split('.').shift()
+}
+
 function query (q) {
-  return q.split(/(?=\.)|(?=#)|(?=\[)|(?=:)|( )/).map(v => (v || '').replace(/^([a-z]+-[a-z-]+)$/g, `[${a}="$1"]`).replace(/^:([0-9]+)$/g, `:nth-child($1)`)).join('')
+  const d = q.split(/(?=\.)|(?=#)|(?=\[)|(?=:)|( )/).map(v => (v || '').replace(/^([a-z]+(-[a-z-]+)?)$/g, `[${a}="$1"]`).replace(/^:([0-9]+)$/g, `:nth-child($1)`)).join('')
+  console.log(q, d)
+  return d
 }
 
 function selectAll (q) {

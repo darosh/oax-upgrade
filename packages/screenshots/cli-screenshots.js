@@ -11,6 +11,7 @@ const progress = require('cli-progress')
 const TARGET = process.argv[2]
 const BASE = process.argv[3]
 const SIZES = process.argv[4]
+const headless = !process.argv[5]
 
 let about = true
 
@@ -26,7 +27,9 @@ if (SIZES) {
 
 mkdirpSync(`${TARGET}/images`)
 
-rimraf.sync(`${TARGET}/images/**/*.png`)
+if (headless) {
+  rimraf.sync(`${TARGET}/images/**/*.png`)
+}
 
 const bar = new progress.Bar({
   etaBuffer: 8,
@@ -40,11 +43,12 @@ const bar = new progress.Bar({
 
   bar.start(cfg.screens * cfg.shots * cfg.themes, counter, { item: 'Browser launching' })
 
-  const browser = await puppeteer.launch()
+  const browser = await puppeteer.launch({ headless })
 
   bar.update(counter, { item: 'Page opening' })
 
-  let page = await browser.newPage()
+  // let page = await browser.newPage()
+  let page = (await browser.pages())[0]
 
   for (const screen in cfg.screens) {
     bar.update(counter, { item: `${screen}` })
@@ -101,7 +105,11 @@ const bar = new progress.Bar({
         await page.evaluate(new Function(cfg.themes[theme].eval))
         const path = imagePath(theme, screen, s.title, index)
         bar.update(counter, { item: `${screen}-${shot}-${s.title}-${theme}` })
-        await page.screenshot({ path })
+
+        if (headless) {
+          await page.screenshot({ path })
+        }
+
         counter++
       }
 
