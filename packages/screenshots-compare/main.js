@@ -4,6 +4,8 @@ import globCb from 'glob'
 import { promisify } from 'util'
 import { join, relative, dirname } from 'path'
 import mkdirp from 'async-mkdirp'
+import template from 'lodash.template'
+import { writeFileSync } from 'fs'
 
 const glob = promisify(globCb)
 const createDiff = promisify(looksSameCb.createDiff)
@@ -20,6 +22,7 @@ export async function compare (newDir, oldDir) {
   let updated = 0
   let deleted = 0
   let same = 0
+  const diffs = []
 
   for (const oldFile of files) {
     const oldRelative = relative(oldDir, oldFile)
@@ -29,7 +32,8 @@ export async function compare (newDir, oldDir) {
     if (isUpdated) {
       updated++
       console.log(`updated: ${oldRelative}`)
-      const diff = join(`${oldDir}_diff`, oldRelative)
+      const diff = `${oldDir}_diff/${oldRelative}`
+      diffs.push(oldRelative)
       await mkdirp(dirname(diff))
       await createDiff(Object.assign({
         reference: oldFile,
@@ -53,6 +57,8 @@ export async function compare (newDir, oldDir) {
   console.log(`${updated} updated`)
   console.log(`${same} same`)
   console.log(`${deleted} deleted`)
+
+  writeFileSync(`${oldDir}_diff/README.md`, template('<% for(diff of diffs) { %>![<%= diff %>](./<%= diff %>)<% } %>')({ diffs }))
 }
 
 function imageUpdated (oldFile, newFile, compareOptions) {

@@ -88,7 +88,7 @@
     "lint": "vue-cli-service lint",
     "lint:packages": "vue-cli-service lint packages/**/*.js",
     "screenshots": "npx -p ./packages/screenshots -c \"screenshots screenshots http://localhost:8080 xs,md\"",
-    "screenshots:compare": "npx -p ./packages/screenshots-compare -c \"screenshots-compare screenshots/images screenshots_old/images\"",
+    "screenshots:compare": "npx -p ./packages/screenshots-compare -c \"screenshots-compare screenshots/images screenshots-repo/images\"",
     "screenshots:publish": "npx -p ./packages/screenshots-compare -c \"screenshots-publish\"",
     "screenshots:index": "npx -p ./packages/screenshots -c \"screenshots-index screenshots xs,md\"",
     "screenshots:preview": "npx -p ./packages/screenshots -c \"screenshots screenshots http://localhost:8080 xs,md no-headless\"",
