@@ -2,7 +2,7 @@
   "name": "screenshots-compare",
   "version": "1.0.0",
   "bin": {
-    "screenshots-fetch": "./cli-fetch.js",
+    "screenshots-fetch": "./cli-screenshots-publish.js",
     "screenshots-compare": "./cli-screenshots-compare.js"
   },
   "license": "MIT",
