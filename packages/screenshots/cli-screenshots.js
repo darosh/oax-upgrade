@@ -4,12 +4,16 @@
 
 const rimraf = require('rimraf')
 const puppeteer = require('puppeteer')
-const cfg = require('../../config/doc/screenshots.json')
-const base = 'http://localhost:8080'
+const cfg = require('./screenshots.json')
+
+const TARGET = process.argv[2]
+const BASE = process.argv[3]
+const SIZES = process.argv[4]
+
 let about = true
 
-if (process.argv[2]) {
-  const pick = process.argv[2].split(',')
+if (SIZES) {
+  const pick = SIZES.split(',')
 
   Object.keys(cfg.screens).map(k => {
     if (pick.indexOf(k) === -1) {
@@ -18,16 +22,16 @@ if (process.argv[2]) {
   })
 }
 
-rimraf.sync('doc/screenshots/images/**/*.png')
+rimraf.sync(`${TARGET}/images/**/*.png`)
 
-function path (theme, screen, shot, index) {
+function imagePath (theme, screen, shot, index) {
   console.log(screen, `${index < 10 ? '0' + index : index}`, shot, theme)
-  return `doc/screenshots/images/${theme}_${screen}_${index < 10
+  return `${TARGET}/images/${theme}_${screen}_${index < 10
     ? '0' + index
     : index}_${shot}.png`
 }
 
-(async () => {
+;(async () => {
   const browser = await puppeteer.launch()
 
   let page = await browser.newPage()
@@ -47,7 +51,7 @@ function path (theme, screen, shot, index) {
 
       if (s.url) {
         // await page.goto('about:url')
-        await page.goto(base + s.url, { waitUntil: 'networkidle' })
+        await page.goto(BASE + s.url, { waitUntil: 'networkidle2' })
         about = false
 
         if (cfg.before) {
@@ -83,7 +87,9 @@ function path (theme, screen, shot, index) {
 
       for (const theme in cfg.themes) {
         await page.evaluate(new Function(cfg.themes[theme].eval))
-        await page.screenshot({ path: path(theme, screen, s.title, index) })
+        const path = imagePath(theme, screen, s.title, index)
+        console.log(path)
+        await page.screenshot({ path })
       }
 
       if (s.evalAfter) {

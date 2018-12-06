@@ -2,7 +2,7 @@
   "name": "screenshots",
   "version": "1.0.0",
   "bin": {
-    "screenshots": "./cli-screenshots-index.js",
+    "screenshots": "./cli-screenshots.js",
     "screenshots-index": "./cli-screenshots-index.js"
   },
   "license": "MIT",

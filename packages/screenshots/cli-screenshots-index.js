@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const rimraf = require('rimraf')
-const {sync: mkdirpSync} = require('mkdirp')
+const { sync: mkdirpSync } = require('mkdirp')
 const { readFileSync, writeFileSync } = require('fs')
 const { resolve } = require('path')
 const template = require('lodash.template')

@@ -87,7 +87,7 @@
     "install": "npx -p ./packages/vuetify-patch -c vuetify-patch",
     "lint": "vue-cli-service lint",
     "lint:packages": "vue-cli-service lint packages/**/*.js",
-    "screenshots": "npx -p ./packages/screenshots -c \"screenshots screenshots md\"",
+    "screenshots": "npx -p ./packages/screenshots -c \"screenshots screenshots http://localhost:8080 md\"",
     "screenshots:index": "npx -p ./packages/screenshots -c \"screenshots-index screenshots md\"",
     "serve": "vue-cli-service serve",
     "test:e2e": "vue-cli-service test:e2e",
