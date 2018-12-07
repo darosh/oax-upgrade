@@ -41,9 +41,11 @@ const compare = require('./screenshots-compare')
     'screenshots-repo/**/*',
     '!screenshots-repo',
     '!screenshots-repo/.git',
-    '!screenshots-repo/images_diff',
     '!screenshots-repo/.git/**/*',
-    '!screenshots-repo/images_diff/**/*'
+    '!screenshots-repo/images_diff',
+    '!screenshots-repo/images_diff/**/*',
+    '!screenshots-repo/images_base',
+    '!screenshots-repo/images_base/**/*'
   ], { dot: true })
 
   const files = (await globby('screenshots')).map(d => d.replace(/^screenshots\//, ''))
