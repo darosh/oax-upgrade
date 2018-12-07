@@ -13,7 +13,7 @@ const BASE = process.argv[3]
 const SIZES = process.argv[4]
 const headless = !process.argv[5]
 
-let about = true
+// let about = true
 
 if (SIZES) {
   const pick = SIZES.split(',')
@@ -54,6 +54,7 @@ const bar = new progress.Bar({
   for (const screen in cfg.screens) {
     bar.update(counter, { item: `${screen}` })
 
+    await page.goto('about:blank')
     await page.setViewport({ width: cfg.screens[screen][0], height: cfg.screens[screen][1], deviceScaleFactor: 1 })
 
     let index = 0
@@ -70,7 +71,7 @@ const bar = new progress.Bar({
       if (s.url) {
         await page.goto(`${BASE}/#${s.url}`, { waitUntil: 'networkidle2' })
         await page.evaluate('location.href')
-        about = false
+        // about = false
 
         if (cfg.before) {
           await page.evaluate(new Function(cfg.before))
@@ -125,11 +126,14 @@ const bar = new progress.Bar({
       }
     }
 
-    await page.goto('about:blank')
-    about = true
+    // await page.goto('about:blank')
+    // about = true
   }
 
-  browser.close()
+  if (headless) {
+    browser.close()
+  }
+
   bar.update(counter, { item: '' })
   bar.stop()
 })()

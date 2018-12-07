@@ -58,7 +58,7 @@ const compare = require('./screenshots-compare')
     .map(d => d.replace(/^screenshots-repo\//, ''))
 
   await git.add(['-f'].concat(files).concat(diffs))
-  await git.commit(`Screenshots ${(new Date()).toISOString()}`)
+  await git.commit(`${(new Date()).toISOString().replace('T', ' ').replace(/:..\..+$/, '')}`)
 
   if (process.env.GH_TOKEN) {
     fetch = fetch.replace('https://', `https://${process.env.GH_TOKEN}@`)
