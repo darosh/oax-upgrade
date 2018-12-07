@@ -11,7 +11,7 @@ const glob = promisify(globCb)
 const createDiff = promisify(looksSameCb.createDiff)
 const looksSame = promisify(looksSameCb)
 
-export async function compare (newDir, oldDir) {
+export async function compare (newDir, oldDir, diffDir) {
   const compareOptions = { ignoreCaret: true, ignoreAntialiasing: true, antialiasingTolerance: 5, strict: false }
 
   const files = await glob(join(oldDir, '**/*.png'))
@@ -32,7 +32,7 @@ export async function compare (newDir, oldDir) {
     if (isUpdated) {
       updated++
       console.log(`updated: ${oldRelative}`)
-      const diff = `${oldDir}_diff/${oldRelative}`
+      const diff = `${diffDir}/${oldRelative}`
       diffs.push(oldRelative)
       await mkdirp(dirname(diff))
       await createDiff(Object.assign({
@@ -58,7 +58,7 @@ export async function compare (newDir, oldDir) {
   console.log(`${same} same`)
   console.log(`${deleted} deleted`)
 
-  writeFileSync(`${oldDir}_diff/README.md`, template('<% for(diff of diffs) { %>![<%= diff %>](./<%= diff %>)<% } %>')({ diffs }))
+  writeFileSync(`${diffDir}/README.md`, template('<% for(diff of diffs) { %>![<%= diff %>](./<%= diff %>)<% } %>')({ diffs }))
 }
 
 function imageUpdated (oldFile, newFile, compareOptions) {

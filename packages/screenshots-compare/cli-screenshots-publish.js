@@ -28,10 +28,10 @@ const compare = require('./screenshots-compare')
     } catch (error) {
     }
 
-    const useBase = await pathExists('screenshots-repo/images_base')
+    const useBase = await pathExists('./screenshots-repo/images_base')
     await del(['screenshots-repo/images_diff'])
     const oldShots = useBase ? './screenshots-repo/images_base' : './screenshots-repo/images'
-    await compare('./screenshots/images', oldShots)
+    await compare('./screenshots/images', oldShots, './screenshots-repo/images_diff')
   } else {
     await git.checkout(['--orphan', 'screenshots'])
     await git.raw(['rm', '--cached', '-r', '*'])
