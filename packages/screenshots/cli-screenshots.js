@@ -40,8 +40,9 @@ const bar = new progress.Bar({
 
 ;(async () => {
   let counter = 0
+  const total = Object.keys(cfg.screens).length * cfg.shots.length * Object.keys(cfg.themes).length
 
-  bar.start(cfg.screens * cfg.shots * cfg.themes, counter, { item: 'Browser launching' })
+  bar.start(total, counter, { item: 'Browser launching' })
 
   const browser = await puppeteer.launch({ headless, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
 
@@ -124,7 +125,7 @@ const bar = new progress.Bar({
   }
 
   browser.close()
-
+  bar.update(counter, { item: '' })
   bar.stop()
 })()
 
