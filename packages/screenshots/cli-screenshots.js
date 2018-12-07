@@ -104,15 +104,20 @@ const bar = new progress.Bar({
       index++
 
       for (const theme in cfg.themes) {
+        counter++
         await page.evaluate(new Function(cfg.themes[theme].eval))
         const path = imagePath(theme, screen, s.title, index)
-        bar.update(counter, { item: `${screen}-${shot}-${s.title}-${theme}` })
+        const item = `${screen}-${shot}-${s.title}-${theme}`
+
+        if (process.stderr.isTTY) {
+          bar.update(counter, { item })
+        } else {
+          console.log(`${counter}/${total}`, item)
+        }
 
         if (headless) {
           await page.screenshot({ path })
         }
-
-        counter++
       }
 
       if (s.evalAfter) {
