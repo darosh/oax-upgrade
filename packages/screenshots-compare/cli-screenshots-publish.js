@@ -11,7 +11,7 @@ const compare = require('./screenshots-compare')
 
 ;(async () => {
   const status = await git.getRemotes(true)
-  const fetch = status[0].refs.fetch
+  let fetch = status[0].refs.fetch
 
   if (!await pathExists('screenshots-repo')) {
     await git.clone(fetch, 'screenshots-repo', '-n')
@@ -57,5 +57,10 @@ const compare = require('./screenshots-compare')
 
   await git.add(['-f'].concat(files).concat(diffs))
   await git.commit(`Screenshots ${(new Date()).toISOString()}`)
+
+  if (process.env.GH_TOKEN) {
+    fetch = fetch.replace('https://', `https://${process.env.GH_TOKEN}@`)
+  }
+
   await git.push(fetch, 'screenshots')
 })()
