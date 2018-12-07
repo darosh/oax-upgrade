@@ -11,6 +11,7 @@
     "ciena-graphlib": "1.0.8",
     "circular-json": "0.5.9",
     "codemirror": "5.42.0",
+    "cross-env": "^5.2.0",
     "d3-array": "2.0.2",
     "d3-format": "1.3.2",
     "d3-scale": "2.1.2",
@@ -79,7 +80,7 @@
   "scripts": {
     "build": "vue-cli-service build",
     "build:dev": "vue-cli-service build --mode development",
-    "ci": "concurrently --success first --kill-others npm:serve:dev \"npm run build:dev && npm run screenshots && npm run screenshots:publish\"",
+    "ci": "cross-env VUE_CLI_TEST=true concurrently --success first --kill-others npm:serve:dev \"npm run build:dev && npm run screenshots && npm run screenshots:publish\"",
     "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
     "data:http:header": "npx -p ./packages/data-http -c \"data-http header > ./src/data/http-header.json\"",
     "data:http:method": "npx -p ./packages/data-http -c \"data-http method > ./src/data/http-method.json\"",
