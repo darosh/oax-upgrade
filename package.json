@@ -79,7 +79,7 @@
   "scripts": {
     "build": "vue-cli-service build",
     "build:dev": "vue-cli-service build --mode development",
-    "ci": "concurrently --success first --kill-others npm:serve:dev \"npm run build:dev && npm run screenshots\"",
+    "ci": "concurrently --success first --kill-others npm:serve:dev \"npm run build:dev && npm run screenshots && npm run screenshots:publish\"",
     "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
     "data:http:header": "npx -p ./packages/data-http -c \"data-http header > ./src/data/http-header.json\"",
     "data:http:method": "npx -p ./packages/data-http -c \"data-http method > ./src/data/http-method.json\"",

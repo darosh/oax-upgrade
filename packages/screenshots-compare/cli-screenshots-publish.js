@@ -7,6 +7,7 @@ const { promisify } = require('util')
 const copyAsync = promisify(copy)
 const globby = require('globby')
 const del = require('del')
+const compare = require('./screenshots-compare')
 
 ;(async () => {
   const status = await git.getRemotes(true)
@@ -19,19 +20,19 @@ const del = require('del')
   git = simpleGit('screenshots-repo')
 
   const branch = await git.branch()
-  const is = branch.all.find(d => d.includes('/screenshots'))
+  const hasScreenshotsRemote = branch.all.find(d => d.includes('/screenshots'))
 
-  if (is) {
-    console.log('remote exists')
+  if (hasScreenshotsRemote) {
     try {
       await git.checkoutBranch('screenshots', 'origin/screenshots')
     } catch (error) {
     }
 
+    const useBase = await pathExists('screenshots-repo/images_base')
     await del(['screenshots-repo/images_diff'])
-    await require('./screenshots-compare')('./screenshots/images', './screenshots-repo/images')
+    const oldShots = useBase ? './screenshots-repo/images_base' : './screenshots-repo/images'
+    await compare('./screenshots/images', oldShots)
   } else {
-    console.log('creating new')
     await git.checkout(['--orphan', 'screenshots'])
     await git.raw(['rm', '--cached', '-r', '*'])
   }
@@ -51,7 +52,8 @@ const del = require('del')
     await copyAsync(`screenshots/${file}`, `screenshots-repo/${file}`, { overwrite: true })
   }
 
-  const diffs = (await globby('screenshots-repo/images_diff/**/*')).map(d => d.replace(/^screenshots-repo\//, ''))
+  const diffs = (await globby('screenshots-repo/images_diff/**/*'))
+    .map(d => d.replace(/^screenshots-repo\//, ''))
 
   await git.add(['-f'].concat(files).concat(diffs))
   await git.commit(`Screenshots ${(new Date()).toISOString()}`)
