@@ -77,6 +77,7 @@
   "private": true,
   "scripts": {
     "build": "vue-cli-service build",
+    "build:dev": "vue-cli-service build --mode development",
     "data:dependencies": "npx -p ./packages/data-dependencies -c \"data-dependencies ./package.json ./src/data/dependencies.json\"",
     "data:http:header": "npx -p ./packages/data-http -c \"data-http header > ./src/data/http-header.json\"",
     "data:http:method": "npx -p ./packages/data-http -c \"data-http method > ./src/data/http-method.json\"",
@@ -93,6 +94,7 @@
     "screenshots:index": "npx -p ./packages/screenshots -c \"screenshots-index screenshots xs,md\"",
     "screenshots:preview": "npx -p ./packages/screenshots -c \"screenshots screenshots http://localhost:8080 xs,md no-headless\"",
     "serve": "vue-cli-service serve",
+    "serve:dev": "npx http-server ./dist -a localhost -p 8080 -c-1",
     "test:e2e": "vue-cli-service test:e2e",
     "test:unit": "vue-cli-service test:unit"
   }

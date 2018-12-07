@@ -43,7 +43,7 @@ const bar = new progress.Bar({
 
   bar.start(cfg.screens * cfg.shots * cfg.themes, counter, { item: 'Browser launching' })
 
-  const browser = await puppeteer.launch({ headless })
+  const browser = await puppeteer.launch({ headless, args: ['--no-sandbox', '--disable-setuid-sandbox'] })
 
   bar.update(counter, { item: 'Page opening' })
 
@@ -67,7 +67,8 @@ const bar = new progress.Bar({
       }
 
       if (s.url) {
-        await page.goto(BASE + s.url, { waitUntil: 'networkidle2' })
+        await page.goto(`${BASE}/#${s.url}`, { waitUntil: 'networkidle2' })
+        await page.evaluate('location.href')
         about = false
 
         if (cfg.before) {

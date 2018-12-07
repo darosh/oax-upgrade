@@ -21,7 +21,7 @@
       "url": "/",
       "wait": ".v-expansion-panel",
       "eval": "OAX.state.ui.loading = OAX.state.ui.log; window.temp = {spec: OAX.state.spec.spec, resources: OAX.state.spec.resources}; OAX.state.spec.spec = null; OAX.state.spec.resources = null",
-      "evalAfter": "Object.assign(OAX.state.spec, window.temp)"
+      "evalAfter": "Object.assign(OAX.state.spec, window.temp); OAX.state.ui.loading = null"
     },
     {
       "title": "landing",
@@ -105,7 +105,7 @@
     {
       "title": "header",
       "eval": "OAX.state.ui.dialog = {type: 'header', param: 'X-Frame-Options'}",
-      "evalAfter": "OAX.state.ui.dialog = {type: null}"
+      "evalAfter": "OAX.state.ui.dialog = {type: null}; OAX.state.view.type = 0"
     },
     {
       "title": "left",
@@ -127,7 +127,7 @@
     {
       "title": "fullscreen",
       "eval": "OAX.select.vue('app-spec-edit').fullScreen()",
-      "evalAfter": "OAX.select.vue('app-spec-edit').fullScreen()"
+      "evalAfter": "OAX.select.vue('app-spec-edit').fullScreen(); OAX.state.ui.left = false"
     },
     {
       "title": "methods",
