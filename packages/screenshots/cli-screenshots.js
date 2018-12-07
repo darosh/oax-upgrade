@@ -54,7 +54,7 @@ const bar = new progress.Bar({
   for (const screen in cfg.screens) {
     bar.update(counter, { item: `${screen}` })
 
-    await page.setViewport({ width: cfg.screens[screen][0], height: cfg.screens[screen][1] })
+    await page.setViewport({ width: cfg.screens[screen][0], height: cfg.screens[screen][1], deviceScaleFactor: 1 })
 
     let index = 0
 
